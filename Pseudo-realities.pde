@@ -62,7 +62,7 @@ void draw() {
   bas=get();
   for (int i=1; i<4; i++) {
     bas.filter(DILATE);
-    bas.filter(BLUR, i*i*i);
+    bas.filter(BLUR, pow(i,3));
     tint(255, 64/i);
     image(bas, 0, 0);
   }
