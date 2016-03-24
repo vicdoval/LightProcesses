@@ -10,13 +10,13 @@ Pusblished at http://lightprocesses.tumblr.com/
 */
 
 color[] c={#4B89AC, #ACE6F6, #E4FCF9, #FAEE5A};
-float time, t;
+float time;
 int dur=50;
 int vals[][][];
 int n=30;
+float mod=15;
 void setup() {
   size(540, 540, P3D);
-  // noLoop();
   smooth(16);
   randomSeed(20);
   frameRate(20);
@@ -33,22 +33,17 @@ void setup() {
 }
 void draw() {
   time=norm(frameCount%dur, 0, dur);
-  t=0*time*TAU;
   background(c[0]);
   noStroke();
   ortho();
   camera(300, 300, 300, 0, 0, 0, 0, 0, 1);
-  float mod=15;
-
-
-  for (int k=-1; k<2; k++) {
+    for (int k=-1; k<2; k++) {
     for (int j=0; j<n; j++) {
       for (int i=0; i<n; i++) {
         int[] ac=vals[i][j];
         int xp= ac[0];
         int yp= ac[1];
         int typ= ac[2];
-
         rectO(xp*mod, yp*mod+(k-time)*2*n*mod, 0, ac[3]*mod, ac[4]*mod, typ);
       }
     }
